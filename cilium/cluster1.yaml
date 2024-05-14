@@ -1,0 +1,30 @@
+cluster:
+  name: cluster1
+  id: 1
+
+k8sServiceHost: cluster1-control-plane
+k8sServicePort: 6443
+kubeProxyReplacement: strict
+
+ipv4:
+  enabled: true
+ipv6:
+  enabled: false
+
+hubble:
+  enabled: false
+  relay:
+    enabled: false
+  ui:
+    enabled: false
+ipam:
+  mode: kubernetes
+
+# Cilium Routing
+routingMode: native
+ipv4NativeRoutingCIDR: 10.244.0.0/16
+enableIPv4Masquerade: true
+autoDirectNodeRoutes: true
+
+clustermesh:
+  useAPIServer: true

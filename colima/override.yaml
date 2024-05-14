@@ -1,0 +1,10 @@
+provision:
+- mode: system
+  script: |
+    #!/usr/bin/env sh
+    cat <<'EOF' >> /etc/sysctl.d/99-sysctl.conf
+    # https://github.com/abiosoft/colima/issues/1000
+    fs.inotify.max_user_watches = 1048576
+    fs.inotify.max_user_instances = 512
+    EOF
+    sysctl -p

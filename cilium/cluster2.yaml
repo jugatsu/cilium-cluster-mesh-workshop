@@ -1,0 +1,34 @@
+cluster:
+  name: cluster2
+  id: 2
+
+k8sServiceHost: cluster2-control-plane
+k8sServicePort: 6443
+kubeProxyReplacement: strict
+
+ipv4:
+  enabled: true
+ipv6:
+  enabled: false
+
+hubble:
+  enabled: false
+  relay:
+    enabled: false
+  ui:
+    enabled: false
+ipam:
+  mode: kubernetes
+
+# Cilium Routing
+routingMode: native
+ipv4NativeRoutingCIDR: 10.244.0.0/16
+enableIPv4Masquerade: true
+autoDirectNodeRoutes: true
+
+clustermesh:
+  useAPIServer: true
+  apiserver:
+    service:
+      # https://github.com/cilium/cilium/issues/26137
+      nodePort: 32380
